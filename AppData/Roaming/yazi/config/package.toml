@@ -1,0 +1,49 @@
+[[plugin.deps]]
+use = "Sonico98/exifaudio"
+rev = "4506f9d"
+hash = "cdfe518db0bee0d2d03f36351b4de08d"
+
+[[plugin.deps]]
+use = "lpanebr/yazi-plugins:first-non-directory"
+rev = "ca18a2c"
+hash = "681abc0948734f7ef7e30b92cafa3b28"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "1962818"
+hash = "1e13c39c1ba52ad020e6e26a2dd39ae5"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:diff"
+rev = "1962818"
+hash = "8f1088536824d36712c588e5c9ef5c28"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "1962818"
+hash = "abb7633bc6e643c91a925122e79031d6"
+
+[[plugin.deps]]
+use = "wylie102/duckdb"
+rev = "3f8c863"
+hash = "5112de4ea9ce83c9b6aa748b3fad665d"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mime-ext"
+rev = "1962818"
+hash = "f52cdaeaed023d6ec42153d8bebcd4f6"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "a7febc0"
+hash = "a819bc25d33938c0d05352f61b5a063d"
+
+[[flavor.deps]]
+use = "Chromium-3-Oxide/everforest-medium"
+rev = "5f9200c"
+hash = "350093e4cb8dc4ab49fc20474074746d"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:dracula"
+rev = "9511cb0"
+hash = "fee9eeb8bf3ac3ed251812cbc0452bbd"

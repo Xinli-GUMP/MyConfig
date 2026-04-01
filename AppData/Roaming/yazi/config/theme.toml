@@ -1,0 +1,28 @@
+[flavor]
+# dark = "catppuccin-mocha"
+# dark = "everforest-medium"
+dark = "dracula"
+
+[mgr]
+cwd = { fg = "lightcyan" }
+
+[indicator]
+# padding = { open = "█", close = "█" }
+
+[tabs]
+active = { fg = "#24273a", bg = "#8aadf4", bold = true }
+inactive = { fg = "#8aadf4", bg = "#363a4f" }
+
+[spot]
+border = { blod = true }
+title = { fg = "lightgreen" }
+tbl_col = { fg = "lightgreen" }
+tbl_cell = { bg = "gray" }
+
+[confirm]
+border = { fg = "lightred", bold = true }
+title = { fg = "red" }
+content = { fg = "red" }
+list = { fg = "lightred" }
+btn_yes = { fg = "red" }
+btn_no = { fg = "lightcyan" }
