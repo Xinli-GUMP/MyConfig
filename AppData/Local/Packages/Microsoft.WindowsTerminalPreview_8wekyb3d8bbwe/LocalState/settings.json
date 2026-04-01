@@ -1,0 +1,616 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema-preview",
+    "actions":
+    [
+        {
+            "command":
+            {
+                "action": "sendInput",
+                "input": "\u001bo"
+            },
+            "id": "User.sendInput.DACAD91",
+            "name": "\u53d1\u9001 ctrl+enter"
+        },
+        {
+            "command":
+            {
+                "action": "sendInput",
+                "input": "\u0017"
+            },
+            "id": "User.sendInput.817164EE"
+        },
+        {
+            "command":
+            {
+                "action": "copy",
+                "singleLine": false
+            },
+            "id": "User.copy.644BA8F2"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 4
+            },
+            "id": "User.newTab.89E6CA61"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 7
+            },
+            "id": "User.newTab.E694A910"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 2
+            },
+            "id": "User.newTab.CCE909E3"
+        },
+        {
+            "command":
+            {
+                "action": "newTab"
+            },
+            "id": "User.newTab.5DEADB41"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 5
+            },
+            "id": "User.newTab.663EF760"
+        },
+        {
+            "command": "closePane",
+            "id": "User.closePane"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 6
+            },
+            "id": "User.newTab.B1B78DBA"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 8
+            },
+            "id": "User.newTab.B7F682DF"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 0
+            },
+            "id": "User.newTab.7975BEED"
+        },
+        {
+            "command": "toggleShaderEffects",
+            "id": "User.toggleShaderEffects"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.A6751878"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 1
+            },
+            "id": "User.newTab.1FA5EB5"
+        },
+        {
+            "command":
+            {
+                "action": "globalSummon"
+            },
+            "id": "User.globalSummon.51A3D78C"
+        },
+        {
+            "command":
+            {
+                "action": "newTab",
+                "index": 3
+            },
+            "id": "User.newTab.F4C304FB"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "id": "User.moveFocus.6CD791B"
+        },
+        {
+            "command":
+            {
+                "action": "closeTab"
+            },
+            "id": "User.closeTab.0"
+        },
+        {
+            "command":
+            {
+                "action": "splitPane",
+                "type": "snippets"
+            },
+            "id": "User.splitPane.A2B727CC"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "nextInOrder"
+            },
+            "id": "User.moveFocus.D7681B66"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "down"
+            },
+            "id": "User.moveFocus.F747588A"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "id": "User.moveFocus.2A0DA8E0"
+        },
+        {
+            "command":
+            {
+                "action": "moveFocus",
+                "direction": "right"
+            },
+            "id": "User.moveFocus.87C324ED"
+        },
+        {
+            "command":
+            {
+                "action": "swapPane",
+                "direction": "previous"
+            },
+            "id": "User.swapPane.75247157"
+        },
+        {
+            "command":
+            {
+                "action": "nextTab"
+            },
+            "id": "User.nextTab.0"
+        }
+    ],
+    "alwaysShowNotificationIcon": false,
+    "alwaysShowTabs": true,
+    "autoHideWindow": false,
+    "centerOnLaunch": true,
+    "compatibility.allowHeadless": false,
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultInputScope": "alphanumericHalfWidth",
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "firstWindowPreference": "defaultProfile",
+    "initialCols": 137,
+    "initialPosition": "60,60",
+    "initialRows": 33,
+    "keybindings":
+    [
+        {
+            "id": null,
+            "keys": "alt+right"
+        },
+        {
+            "id": null,
+            "keys": "alt+up"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "id": "User.newTab.B7F682DF",
+            "keys": "ctrl+shift+9"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+n"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+numpad0"
+        },
+        {
+            "id": "Terminal.ScrollUp",
+            "keys": "alt+u"
+        },
+        {
+            "id": "User.newTab.5DEADB41",
+            "keys": "ctrl+shift+t"
+        },
+        {
+            "id": null,
+            "keys": "alt+down"
+        },
+        {
+            "id": null,
+            "keys": "alt+left"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+up"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+down"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+k"
+        },
+        {
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "User.newTab.89E6CA61",
+            "keys": "ctrl+shift+5"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+0"
+        },
+        {
+            "id": "User.newTab.1FA5EB5",
+            "keys": "ctrl+shift+2"
+        },
+        {
+            "id": "User.newTab.CCE909E3",
+            "keys": "ctrl+shift+3"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+plus"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+minus"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+left"
+        },
+        {
+            "id": "User.moveFocus.6CD791B",
+            "keys": "alt+shift+k"
+        },
+        {
+            "id": "User.newTab.E694A910",
+            "keys": "ctrl+shift+8"
+        },
+        {
+            "id": "User.moveFocus.2A0DA8E0",
+            "keys": "alt+shift+h"
+        },
+        {
+            "id": null,
+            "keys": "alt+space"
+        },
+        {
+            "id": null,
+            "keys": "win+sc(41)"
+        },
+        {
+            "id": "User.globalSummon.51A3D78C",
+            "keys": "alt+\\"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "alt+v"
+        },
+        {
+            "id": "User.moveFocus.87C324ED",
+            "keys": "alt+shift+l"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+v"
+        },
+        {
+            "id": "User.closePane",
+            "keys": "alt+w"
+        },
+        {
+            "id": "User.moveFocus.F747588A",
+            "keys": "alt+shift+j"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+alt+1"
+        },
+        {
+            "id": "User.newTab.7975BEED",
+            "keys": "ctrl+shift+1"
+        },
+        {
+            "id": "User.newTab.B1B78DBA",
+            "keys": "ctrl+shift+7"
+        },
+        {
+            "id": "Terminal.ScrollDown",
+            "keys": "alt+d"
+        },
+        {
+            "id": null,
+            "keys": "alt+enter"
+        },
+        {
+            "id": "User.nextTab.0",
+            "keys": "ctrl+tab"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+m"
+        },
+        {
+            "id": "Terminal.ToggleMarkMode",
+            "keys": "alt+q"
+        }
+    ],
+    "language": "zh-Hans",
+    "launchMode": "focus",
+    "minimizeToNotificationArea": true,
+    "newTabMenu":
+    [
+        {
+            "type": "remainingProfiles"
+        },
+        {
+            "allowEmpty": false,
+            "entries":
+            [
+                {
+                    "commandline": null,
+                    "name": null,
+                    "source": "Windows.Terminal.SSH",
+                    "type": "matchProfiles"
+                }
+            ],
+            "icon": "\ue969",
+            "inline": "auto",
+            "name": "SSH",
+            "type": "folder"
+        }
+    ],
+    "newTabPosition": "afterCurrentTab",
+    "profiles":
+    {
+        "defaults":
+        {
+            "adjustIndistinguishableColors": "always",
+            "bellStyle": "window",
+            "colorScheme": "My One Half Dark",
+            "cursorColor": "#98C379",
+            "elevate": false,
+            "experimental.rainbowSuggestions": true,
+            "experimental.repositionCursorWithMouse": false,
+            "font":
+            {
+                "face": "JetBrainsMono Nerd Font Mono",
+                "features": {},
+                "size": 13
+            },
+            "foreground": "#98C379",
+            "opacity": 80,
+            "pathTranslationStyle": "mingw",
+            "scrollbarState": "hidden",
+            "startingDirectory": "%USERPROFILE%",
+            "useAcrylic": false
+        },
+        "list":
+        [
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe && chcp 65001>nul",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "cmd",
+                "unfocusedAppearance": {}
+            },
+            {
+                "backgroundImage": null,
+                "backgroundImageOpacity": 0.2,
+                "colorScheme":
+                {
+                    "light": "Solarized Light"
+                },
+                "commandline": "\"C:\\Users\\86136\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe\" -NoLogo",
+                "cursorColor": "#F2F2F2",
+                "experimental.retroTerminalEffect": false,
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "pwsh",
+                "source": "Windows.Terminal.PowershellCore",
+                "startingDirectory": "E:\\Downloads",
+                "tabColor": "#98C379"
+            },
+            {
+                "commandline": "cmd.exe /k \"D:/Program Files/ArcGIS/Pro/bin/Python/Scripts/proenv.bat\"",
+                "guid": "{2bb67c09-82e1-48b9-8edf-a8878a1ba71e}",
+                "hidden": false,
+                "icon": "D:\\Program Files\\ArcGIS\\Pro\\Support\\Icons\\ArcGIS Pro.ico",
+                "name": "ArcGIS"
+            },
+            {
+                "commandline": "E:\\msys2\\msys2_shell.cmd -defterm -here -no-start -ucrt64",
+                "guid": "{b42fafd2-78b8-4679-93f6-8a8e103a8c48}",
+                "hidden": false,
+                "icon": "E:/msys2/clang64.ico",
+                "name": "MSYS2",
+                "startingDirectory": "%USERPROFILE%"
+            },
+            {
+                "colorScheme": "Campbell",
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": true,
+                "name": "Git Bash",
+                "source": "Git"
+            },
+            {
+                "guid": "{c9faf841-beda-5dbe-addd-87713aa99014}",
+                "hidden": true,
+                "name": "Developer Command Prompt for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{2a346dd6-55eb-516c-8cc7-4b2d9e596d2c}",
+                "hidden": true,
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{15e5496d-199f-56b5-97ba-3e26e1ab0cd9}",
+                "hidden": true,
+                "name": "SSH - honor",
+                "source": "Windows.Terminal.SSH"
+            },
+            {
+                "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
+                "hidden": false,
+                "name": "Nushell",
+                "source": "nu"
+            }
+        ]
+    },
+    "rendering.graphicsAPI": "direct3d11",
+    "schemes":
+    [
+        {
+            "background": "#000000",
+            "black": "#0C0C0C",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#3B78FF",
+            "brightCyan": "#61D6D6",
+            "brightGreen": "#16C60C",
+            "brightPurple": "#B4009E",
+            "brightRed": "#E74856",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#F9F1A5",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#13A10E",
+            "name": "Color Scheme 16",
+            "purple": "#881798",
+            "red": "#C50F1F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#C19C00"
+        },
+        {
+            "background": "#000000",
+            "black": "#0C0C0C",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#3B78FF",
+            "brightCyan": "#61D6D6",
+            "brightGreen": "#16C60C",
+            "brightPurple": "#B4009E",
+            "brightRed": "#E74856",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#F9F1A5",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#13A10E",
+            "name": "Color Scheme 18",
+            "purple": "#881798",
+            "red": "#C50F1F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#C19C00"
+        },
+        {
+            "background": "#121212",
+            "black": "#282C34",
+            "blue": "#61AFEF",
+            "brightBlack": "#5A6374",
+            "brightBlue": "#61AFEF",
+            "brightCyan": "#56B6C2",
+            "brightGreen": "#98C379",
+            "brightPurple": "#C678DD",
+            "brightRed": "#E06C75",
+            "brightWhite": "#DCDFE4",
+            "brightYellow": "#E5C07B",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#56B6C2",
+            "foreground": "#DCDFE4",
+            "green": "#98C379",
+            "name": "My One Half Dark",
+            "purple": "#C678DD",
+            "red": "#E06C75",
+            "selectionBackground": "#FFFFFF",
+            "white": "#DCDFE4",
+            "yellow": "#E5C07B"
+        },
+        {
+            "background": "#000000",
+            "black": "#0C0C0C",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#3B78FF",
+            "brightCyan": "#61D6D6",
+            "brightGreen": "#16C60C",
+            "brightPurple": "#B4009E",
+            "brightRed": "#E74856",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#F9F1A5",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#9ACD32",
+            "green": "#13A10E",
+            "name": "custom",
+            "purple": "#881798",
+            "red": "#C50F1F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#C19C00"
+        }
+    ],
+    "showTabsInTitlebar": true,
+    "showTerminalTitleInTitlebar": true,
+    "tabWidthMode": "titleLength",
+    "theme": "dark",
+    "themes": [],
+    "useAcrylicInTabRow": false,
+    "windowingBehavior": "useNew"
+}
