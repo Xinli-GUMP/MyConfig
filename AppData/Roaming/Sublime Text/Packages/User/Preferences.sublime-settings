@@ -1,0 +1,62 @@
+{
+	"ignored_packages": [
+		//"Package Control",
+		/*"Vintage",*/
+		/*"CMakeFormat",*/
+		/*"Translator",*/
+		"BracketHighlighter",
+		"Debugger",
+		"DoxyDoxygen (evolution)",
+		"Highlighter",
+		"LSP-clangd",
+		"LSP-copilot",
+		"LSP-pyright",
+		"MarkdownPreview",
+		"Package Control",
+		"SublimeGDB",
+		"Terminus",
+		"Vintage",
+	],
+	"scroll_context_lines": 5,
+	// 自动换行
+	"word_wrap": true,
+	"highlight_line": false,
+	"relative_line_numbers": true,
+	"theme": "Material-Theme.sublime-theme",
+	"color_scheme": "Mariana.sublime-color-scheme",
+	"dark_color_scheme": "Mariana.sublime-color-scheme",
+	"light_color_scheme": "Breakers.sublime-color-scheme",
+	"dark_theme": "DAneo Sublime.sublime-theme",
+	"light_theme": "Aristocat.sublime-theme",
+	"font_size": 14,
+	// "font_face": "JetBrainsMono NF",
+	"font_face": "Consolas",
+	"font_options": [
+		"subpixel_antialias"
+	],
+	/*"word_wrap": "true",*/
+	"index_files": false,
+	"highlight_modified_tabs": true,
+	"show_encoding": true,
+	"show_indentation": false,
+	"vintageous_ctrl_keys": true,
+	"neovintageous_build_version": 13200,
+	"vintageous_i_escape_jk": true,
+	"vintageous_use_sys_clipboard": true,
+	"vintageous_enable_sneak": true,
+	//Delegate configured keys to be handled by Sublime Text.
+	"vintageous_handle_keys": {
+		"<C-f>": false,
+		"<C-c>": false,
+		"<M-f4>": false,
+	},
+	"vintageous_reset_mode_when_switching_tabs": false,
+	"close_windows_when_empty": false,
+	"added_words": [
+		"smartcase",
+		"int",
+	],
+	"vintageous_use_super_keys": true,
+	"afn_use_keybinding": true,
+	"vintageous_use_ctrl_keys": true,
+}

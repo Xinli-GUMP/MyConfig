@@ -1,0 +1,10 @@
+// Terminal Settings - User
+{
+	"terminal": "C:/Users/86136/AppData/Local/Microsoft/WindowsApps/wt.exe",
+	"parameters": [
+		"-w",
+		"0",
+		"-d",
+		"%CWD%"
+	]
+}

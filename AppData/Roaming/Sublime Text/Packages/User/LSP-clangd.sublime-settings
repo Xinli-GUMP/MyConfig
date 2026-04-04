@@ -1,0 +1,46 @@
+// Settings in here override those in "LSP-clangd/LSP-clangd.sublime-settings"
+// clang env
+// {
+//     "initializationOptions": {
+//         "clangd.pretty": true,
+//         // 3. 设置备用编译参数
+//         // 当没有 compile_commands.json 时，clangd会使用这里的参数
+//         "fallbackFlags": [
+//             // c++ 标准
+//             "-std=c++23",
+//             // -i 参数是告诉编译器“到这个目录里去寻找头文件”
+//             // 关键修正：将 c++ 标准库的路径放在最前面！
+//             "-I",
+//             "E:/msys2/clang64/include/c++/v1",
+//             "-I",
+//             "E:/msys2/clang64/include",
+//             "-I",
+//             "${folder}/include",
+//         ],
+//         // 4. 设置 query-driver，这是找到系统头文件的关键
+//         // 注意，这里的键名是 "clangd.query-driver"，而不是一个通用参数
+//         "clangd.query-driver": "E:/msys2/clang64/bin/clang++-*"
+//     }
+// }
+// ------------------------
+// // GCC env
+{
+    "initializationOptions": {
+        // 启用clang-tidy代码检查，可能启用后warning会比较多，自己看着办吧
+        "clangd.clang-tidy": true,
+        "clangd.number-workers": "4",
+        "clangd.query-driver": "E:/msys2/mingw64/bin/g++-*",
+        "clangd.compile-commands-dir": null,
+        // 美化clangd输出的JSON
+        "clangd.pretty": true,
+        "fallbackFlags": [
+            "-target",
+            "x86_64-w64-mingw32",
+            "--gcc-toolchain=E:/msys2/mingw64/bin/g++.exe",
+            // "-stdlib=libstdc++",
+            "-I",
+            "${folder}/include/"
+        ],
+    },
+    "enabled": true,
+}

@@ -1,0 +1,87 @@
+{
+   // "gdb_executable": "E:/msys2/clang64/bin/gdb.exe",
+   "workingdir": "${folder:${file}}",
+   "commandline": "g++ -g -std=c++23 -finput-charset=UTF-8 -fexec-charset=UTF-8 ${file} -o ./build/bin/${file_base_name} && gdb --interpreter=mi --args ./build/bin/${file_base_name}",
+   // Define debugging window layout (window split)
+   // first define column/row separators, then refer to them to define cells
+   /*
+    cols 和 rows 定义了列和行的分隔符位置，使用相对比例表示（0.0~1.0）。
+    例如，"cols": [0.0, 0.33, 0.66, 1.0] 定义了四个垂直分隔点：0%、33%、66%和100%。
+    "rows": [0.0, 0.75, 1.0] 定义了三个水平分隔点：0%、75%和100%。
+    cells 定义了每个窗口区域（或单元格）的位置。
+    每个单元格由四个数字定义，分别是左上角和右下角的（列索引，行索引）。
+    例如，
+     "cells": [
+        [0, 0, 3, 1],  // 占据上半部分的整个宽度
+        [0, 1, 1, 2],  // 占据下半部分的左1/3
+        [1, 1, 2, 2],  // 占据下半部分的中间1/3
+        [2, 1, 3, 2]   // 占据下半部分的右1/3
+    ]
+    */
+   "layout": {
+      "cols": [
+         0.0,
+         0.33,
+         0.5,
+         0.66,
+         1.0
+      ], // index(0, 1, 2, 3, 4, ...)
+      "rows": [
+         0.0,
+         0.5,
+         0.75,
+         1.0
+      ],
+      // "cols": [0.0, 0.33, 0.5, 0.66, 1.0], // index(0, 1, 2, 3, 4, ...)
+      // "rows": [0.0, 0.4, 0.6, 0.8, 1.0],
+      "cells": [ // c1 r1 c2 r2
+         [
+            0,
+            0,
+            2,
+            3
+         ], // -> (0.00, 0.00), (0.50, 1.00)
+         [
+            2,
+            0,
+            4,
+            1
+         ], // -> (0.50, 0.00), (1.00, 0.50)
+         [
+            2,
+            1,
+            4,
+            2
+         ], // -> (0.50, 0.40), (1.00, 0.75)
+         [
+            2,
+            2,
+            4,
+            3
+         ], // -> (0.50, 0.60), (1.00, 1.00)
+      ]
+      // "cells":
+      // [ // c1 r1 c2 r2
+      //     [0, 0, 2, 4], // -> (0.00, 0.00), (0.50, 1.00)
+      //     [2, 0, 4, 1], // -> (0.50, 0.00), (1.00, 0.40)
+      //     [2, 1, 4, 2], // -> (0.50, 0.40), (1.00, 0.60)
+      //     [2, 2, 4, 3], // -> (0.50, 0.60), (1.00, 0.80)
+      //     [2, 2, 4, 4]  // -> (0.50, 0.80), (1.00, 1.00)
+      // ]
+   },
+   "file_group": 0,
+   "variables_group": 1,
+   "variables_open": true,
+   "callstack_group": 2,
+   "callstack_open": true,
+   "session_group": 2,
+   "session_open": true,
+   "console_group": 3,
+   "console_open": true,
+   "breakpoints_group": 3,
+   "breakpoints_open": false,
+   "threads_group": 3,
+   "threads_open": false,
+   "show_gdb_output": true,
+   "enable_pretty_printing": true,
+}

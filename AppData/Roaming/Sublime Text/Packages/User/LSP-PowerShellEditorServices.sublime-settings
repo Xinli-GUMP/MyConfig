@@ -1,0 +1,5 @@
+// Settings in here override those in "LSP-PowerShellEditorServices/LSP-PowerShellEditorServices.sublime-settings"
+{
+	"powershell_exe": "powershell.exe",
+	"powershell.codeFormatting.autoCorrectAliases": true,
+}

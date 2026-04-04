@@ -1,0 +1,15 @@
+{     // Specifies whether or not format files once they saved.
+    "format_on_save": true,
+
+     "max-line-length": 99,
+
+    // Hang closing bracket instead of matching indentation of opening bracket's line.
+    "hang-closing": true,
+
+    // If true - open new output panel with format/preview results.
+    "show_output_panel": false,
+
+     // The value shows how deep the plugin should look for *.py files
+    // before disabling "Preview" and "Format" items in the Side Bar "AutoPep8" Context Menu.
+    "file_menu_search_depth": 1, // max depth to search python files
+}

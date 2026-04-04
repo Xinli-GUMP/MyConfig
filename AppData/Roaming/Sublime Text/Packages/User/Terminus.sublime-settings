@@ -1,0 +1,24 @@
+{
+    "256color": true,
+    "brighten_bold_text": false,
+    // "theme": "chalk",
+     "default_config": {
+    "windows": "PowerShell"
+    },
+
+    "shell_configs": [
+        {
+    "name": "PowerShell",
+    "cmd": ["pwsh", "-NoLogo"],
+    "env": {},
+    "enable": true,
+    "platforms": ["windows"]
+        }],
+    //  "preserve_keys" : [
+    //      "ctrl+k",    //there are a number of shortcuts with "ctrl+k" prefix.
+    //      "ctrl+p"   // to show Go to Anything
+    // ],
+    "view_settings": {
+    "font_face": "JetBrainsMono Nerd Font"
+    },
+}

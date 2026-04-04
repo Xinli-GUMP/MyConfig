@@ -1,0 +1,76 @@
+{
+  // "diagnostics_highlight_style": {
+  //   "error": "box",
+  //   "warning": "box",
+  //   "info": "underline",
+  //   "hint": "stippled"
+  // },
+  // pyrhon的LSP
+  // pyright
+  // "clients": {
+  //   // ArcGIS pyright
+  //   "pyright": {
+  //     "command": [
+  //       "pyright-langserver",
+  //       "--stdio"
+  //     ],
+  //     "scopes": [
+  //       "source.python"
+  //     ],
+  //     "enabled": true,
+  //     "env": {},
+  //     "languageId": "python",
+  //     "settings": {
+  //       // "python": {
+  //       //   // 配置解释器环境
+  //       //   "pythonPath": "D:\\Program Files\\ArcGIS\\Pro\\bin\\Python\\envs\\arcgispro-py3\\python.exe",
+  //       //   "analysis": {
+  //       //     "typeCheckingMode": "basic",
+  //       //     "extraPaths": [
+  //       //       "D:\\Program Files\\ArcGIS\\Pro\\bin\\Python\\envs\\arcgispro-py3\\Lib\\site-packages"
+  //       //     ],
+  //       //     "autoSearchPaths": true,
+  //       //     "useLibraryCodeForTypes": true
+  //       //   }
+  //       // },
+  //     }
+  //   },
+  //   // Python 3.12
+  //   "pyright": {
+  //     "command": [
+  //       "pyright-langserver",
+  //       "--stdio"
+  //     ],
+  //     "enabled": true,
+  //     "env": {},
+  //     "languageId": "python",
+  //     "scopes": [
+  //       "source.python"
+  //     ],
+  //     "settings": {
+  //       "python": {
+  //         "analysis": {
+  //           "autoSearchPaths": true,
+  //           "extraPaths": [
+  //             "E:\\Pycharm\\Python312\\Lib\\site-packages"
+  //           ],
+  //           "typeCheckingMode": "basic",
+  //           "useLibraryCodeFor Types": true
+  //         },
+  //         "pythonPath": "E:\\Pycharm\\Python312\\python.exe"
+  //       }
+  //     }
+  //   }
+  // },
+
+  "hover_highlight_style": "outline",
+  // Disable Sublime Text's snippet completions.
+  "inhibit_snippet_completions": true,
+  "lsp_format_on_paste": true,
+  "lsp_format_on_save": true,
+  "semantic_highlighting": true,
+  "show_inlay_hints": true,
+  "inlay_hints_max_length": 50,
+  "show_multiline_diagnostics_highlights": false
+  // "diagnostics_highlight_style": "",
+}
