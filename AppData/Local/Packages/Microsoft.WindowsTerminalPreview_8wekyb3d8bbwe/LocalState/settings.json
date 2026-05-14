@@ -23,6 +23,14 @@
         {
             "command":
             {
+                "action": "newTab",
+                "index": 7
+            },
+            "id": "User.newTab.E694A910"
+        },
+        {
+            "command":
+            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -40,17 +48,13 @@
             "command":
             {
                 "action": "newTab",
-                "index": 7
-            },
-            "id": "User.newTab.E694A910"
-        },
-        {
-            "command":
-            {
-                "action": "newTab",
                 "index": 2
             },
             "id": "User.newTab.CCE909E3"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste"
         },
         {
             "command":
@@ -58,10 +62,6 @@
                 "action": "newTab"
             },
             "id": "User.newTab.5DEADB41"
-        },
-        {
-            "command": "paste",
-            "id": "User.paste"
         },
         {
             "command":
@@ -96,16 +96,16 @@
             "id": "User.find"
         },
         {
+            "command": "toggleShaderEffects",
+            "id": "User.toggleShaderEffects"
+        },
+        {
             "command":
             {
                 "action": "newTab",
                 "index": 0
             },
             "id": "User.newTab.7975BEED"
-        },
-        {
-            "command": "toggleShaderEffects",
-            "id": "User.toggleShaderEffects"
         },
         {
             "command":
@@ -218,7 +218,7 @@
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultInputScope": "alphanumericHalfWidth",
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "defaultProfile": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
     "firstWindowPreference": "defaultProfile",
     "initialCols": 137,
     "initialPosition": "60,60",
@@ -227,7 +227,7 @@
     [
         {
             "id": null,
-            "keys": "alt+right"
+            "keys": "ctrl+shift+w"
         },
         {
             "id": null,
@@ -235,7 +235,11 @@
         },
         {
             "id": null,
-            "keys": "ctrl+shift+w"
+            "keys": "alt+right"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+n"
         },
         {
             "id": "User.newTab.B7F682DF",
@@ -243,19 +247,15 @@
         },
         {
             "id": null,
-            "keys": "ctrl+shift+n"
-        },
-        {
-            "id": null,
             "keys": "ctrl+numpad0"
-        },
-        {
-            "id": "Terminal.ScrollUp",
-            "keys": "alt+u"
         },
         {
             "id": "User.newTab.5DEADB41",
             "keys": "ctrl+shift+t"
+        },
+        {
+            "id": "Terminal.ScrollUp",
+            "keys": "alt+u"
         },
         {
             "id": null,
@@ -503,10 +503,14 @@
                 "source": "Windows.Terminal.SSH"
             },
             {
+                "colorScheme": "My One Half Dark",
+                "cursorColor": "#DCDFE4",
+                "foreground": "#98C379",
                 "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
                 "hidden": false,
                 "name": "Nushell",
-                "source": "nu"
+                "source": "nu",
+                "tabColor": "#282C34"
             }
         ]
     },

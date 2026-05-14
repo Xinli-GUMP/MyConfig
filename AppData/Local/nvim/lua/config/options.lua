@@ -4,7 +4,8 @@
 
 -- my_opts
 vim.opt.fileencodings = { "utf-8", "gbk", "gb18030", "cp936", "latin1" }
-vim.opt.shell = "pwsh.exe -NoLogo"
+-- vim.opt.shell = "pwsh.exe -NoLogo"
+vim.opt.shell = "nu"
 -- 禁用 Neovim 内置 SQL 补全插件对按键的劫持
 vim.g.omni_sql_no_default_maps = 1
 

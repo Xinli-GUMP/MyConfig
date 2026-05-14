@@ -29,8 +29,8 @@ desc = "Maximize or restore the preview pane"
 # on   = "<C-s>"
 on = "!"
 for = "windows"
-run = 'shell "pwsh -NoLogo" --block'
-desc = "Open PowerShell here"
+run = 'shell "nu" --block'
+desc = "Open NuShell here"
 
 # 跳转到当前目录的第一个文件位置
 [[mgr.prepend_keymap]]

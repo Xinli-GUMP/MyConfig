@@ -2,19 +2,18 @@
 ; # -> Win | ! -> alt | ^ -> ctrl | + -> | shift
 
 ; 设置快捷键 Win + E 运行 yazi
-
 #e::
 {
     ; 1. 启动命令
     Run "wt -w 0 new-tab -d E:\Downloads yazi"
-    
+
     ; 2. 强力探测：首先等待窗口【存在】（解决异步启动问题）
     ; 设置 2 秒超时，防止死循环
     if WinWait("ahk_exe WindowsTerminal.exe", , 2)
     {
         ; 3. 发出激活指令
         WinActivate "ahk_exe WindowsTerminal.exe"
-        
+
         ; 4. 关键：等待窗口真正变为【活动状态】（解决焦点被抢占问题）
         ; 如果在 1 秒内没激活成功，可以尝试再激活一次
         if !WinWaitActive("ahk_exe WindowsTerminal.exe", , 1)
@@ -68,7 +67,7 @@
 
 ; 按下 Alt+F11 键来调整当前活动窗口的透明度
 !F11:: {
-    hwnd := WinExist("A") 
+    hwnd := WinExist("A")
     ; 获得当前窗口ID，使用WinExist而不是WinGetID
     if (!hwnd)
     {
@@ -77,7 +76,7 @@
     }
 
     ; 获得当前窗口透明值,确保透明度在0到255的范围内
-    T := WinGetTransparent(hwnd)     
+    T := WinGetTransparent(hwnd)
 
     ; 如果没有获取到透明度，初始化透明度为255
     if (T == "" or T == "ERROR")
@@ -85,7 +84,7 @@
         T := 255    ; 如果透明度为空或者透明度小于195，则重置透明度
 
     }
-    if (T = "" or T < 195) 
+    if (T = "" or T < 195)
     {
         T := 255
         WinSetTransparent(T, hwnd)

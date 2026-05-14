@@ -39,10 +39,8 @@ alias lg = lazygit
 alias ipy = ipython
 alias q = exit
 
-# 极其优雅的 eza 包装
-# Nushell 原生的 ls 返回的是强类型的结构化表格，为了防止习惯冲突并保留 eza 的原生高亮，我们用函数包装
 # 注意：在 Nushell 中明确调用外部非内置命令时，推荐使用 `^` 符号 (Escape 符)
-def ls [...args] {
+def eza [...args] {
     ^eza --icons --classify --color-scale --group-directories-first ...$args
 }
 
@@ -125,10 +123,83 @@ def fkill [] {
     if $out.exit_code == 0 {
         # 提取第一列的 PID，转为整数并物理消灭
         let target_pid = ($out.stdout | split row "\t" | first | str trim | into int)
-        kill -f  -q $target_pid
+        kill -f -q $target_pid
     }
 }
 
+# 开启全局模糊匹配 (Fuzzy)
+$env.config.completions.algorithm = "fuzzy"
 # carapace
 source $"($nu.cache-dir)/carapace.nu"
+
+# ==========================================
+# 注入定制语法高亮 (Tokyo Night 风格)
+# ==========================================
+$env.config.color_config = ($env.config.color_config | default {} | merge {
+    # 基础类型
+    shape_garbage: "#f7768e"          # 错误 (Error) - 红色
+    shape_string: "#9ece6a"           # 字符串 (String) - 绿色
+    shape_string_interpolation: "#2ac3de" # 包含变量的字符串
+    shape_int: "#ff9e64"              # 整数 - 橘红
+    shape_float: "#ff9e64"            # 浮点数 - 橘红
+    shape_variable: "#7dcfff"         # 变量 (Variable) - 浅蓝
+    shape_literal: "#ADFF2F"          # 默认前景色
+
+    # 命令与关键字
+    shape_internalcall: "#FFF000"     # 内部命令 - 金色
+    shape_external: "#FFF000"         # 外部命令 - 金色
+    shape_external_resolved: "#FFF000" # 已解析的外部命令 - 金色 (注意这里的完美空格)
+    shape_keyword: "#bb9af7"          # 关键字 (Keyword) - 紫色
+    
+    # 参数与操作符
+    shape_flag: "#FF4500"             # 参数 (Parameter) - 橙红
+# shape_externalarg: "#a9b1d6" # 外部命令的参数 - 东京之夜的淡蓝灰色
+    shape_operator: "#89ddff"         # 操作符 (Operator) - 青色
+    shape_pipe: "#89ddff"             # 管道符 |
+    shape_redirection: "#89ddff"      # 重定向 >
+
+    # 路径与成员访问
+    cell_path: "#73daca"              # 属性成员 (Member) - 蓝绿
+    shape_filepath: "#7dcfff"         # 文件路径
+    shape_directory: "#7dcfff"        # 目录
+    shape_globpattern: "#2ac3de"      # 通配符 (*, ?)
+
+    # 类型与注释
+    shape_signature: "#2ac3de"        # 类型签名 (Type) - 青色
+    shape_comment: "#565f89"          # 注释 (Comment) - 灰蓝
+})
+
+# ==========================================
+# 交换 Tab 和 Ctrl+Space 的触发菜单
+# ==========================================
+$env.config.keybindings = ($env.config.keybindings | append [
+    # 1. 把 Tab 键的灵魂献给 IDE 菜单
+    {
+        name: trigger_ide_menu
+        modifier: none
+        keycode: tab
+        mode: [emacs, vi_normal, vi_insert]
+        event: {
+            until: [
+                { send: menu name: ide_completion_menu }
+                { send: menunext }
+                { edit: complete }
+            ]
+        }
+    },
+    # 2. 把 Ctrl+Space 降级为触发传统的网格菜单
+    {
+        name: trigger_classic_menu
+        modifier: control
+        keycode: space
+        mode: [emacs, vi_normal, vi_insert]
+        event: {
+            until: [
+                { send: menu name: completion_menu }
+                { send: menunext }
+                { edit: complete }
+            ]
+        }
+    }
+])
 
