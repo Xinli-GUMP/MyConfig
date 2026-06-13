@@ -1,83 +1,9 @@
-# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
-# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
-#  vfs
-[[mgr.prepend_keymap]]
-on = ["g", "p"]
-run = "cd sftp://honor/storage"
-desc = "Go to Honor"
+# A TOML linter such as Tombi can use this schema to validate your config.
+# If you encounter any problems, please file an issue at https://github.com/yazi-rs/schemas.
 
-[[mgr.prepend_keymap]]
-on = '<F9>'
-run = "plugin mediainfo -- toggle-metadata"
-desc = "Toggle media preview metadata"
-
-# 关闭/开启预览
-[[mgr.prepend_keymap]]
-on = "T"
-run = "plugin toggle-pane min-preview"
-desc = "Show or hide the preview pane"
-
-# 最大化预览
-[[mgr.prepend_keymap]]
-on = "<C-t>"
-run = "plugin toggle-pane max-preview"
-desc = "Maximize or restore the preview pane"
-
-# open pwsh
-[[mgr.prepend_keymap]]
-# on   = "<C-s>"
-on = "!"
-for = "windows"
-run = 'shell "nu" --block'
-desc = "Open NuShell here"
-
-# 跳转到当前目录的第一个文件位置
-[[mgr.prepend_keymap]]
-on = ["F"]
-run = "plugin  first-non-directory"
-desc = "Jumps to the first file"
-
-# 一次ESC关掉输入面板(不进入Vi模式)
-# [[input.prepend_keymap]]
-# on   = "<Esc>"
-# run  = "close"
-# desc = "Cancel input"
-
-# Diff the selected file with the hovered file, create a living patch, and copy it to the clipboard.
-[[mgr.prepend_keymap]]
-on = "<C-A-d>"
-run = "plugin diff"
-desc = "Diff the selected with the hovered file"
-
-# 使用系统剪贴板
-[[mgr.prepend_keymap]]
-on = "<C-y>"
-run = ["plugin system-clipboard"]
-
-# duckdb
-# [[mgr.prepend_keymap]]
-# on = "H"
-# run = "plugin duckdb -1"
-# desc = "Scroll one column to the left"
-
-# [[mgr.prepend_keymap]]
-# on = "L"
-# run = "plugin duckdb +1"
-# desc = "Scroll one column to the right"
-
-# [[mgr.prepend_keymap]]
-# on = ["g", "o"]
-# run = "plugin duckdb -open"
-# desc = "open with duckdb"
-
-# [[manager.prepend_keymap]]
-# on = ["g", "u"]
-# run = "plugin duckdb -ui"
-# desc = "open with duckdb ui"
+#:schema https://yazi-rs.github.io/schemas/keymap.json
 
 [mgr]
-
 keymap = [
   { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selection, or cancel search" },
   { on = "<C-[>", run = "escape", desc = "Exit visual mode, clear selection, or cancel search" },
@@ -124,7 +50,7 @@ keymap = [
   # Toggle
   { on = "<Space>", run = [
     "toggle",
-    "arrow next",
+    "arrow 1",
   ], desc = "Toggle the current selection state" },
   { on = "<C-a>", run = "toggle_all --state=on", desc = "Select all files" },
   { on = "<C-r>", run = "toggle_all", desc = "Invert selection of all files" },
@@ -331,7 +257,16 @@ keymap = [
   ], run = "follow", desc = "Follow hovered symlink" },
 
   # Tabs
-  { on = "t", run = "tab_create --current", desc = "Create a new tab with CWD" },
+  { on = "t", run = "tab_create --current", desc = "Create a new tab in CWD" },
+  # { on = [
+  #   "t",
+  #   "t",
+  # ], run = "tab_create --current", desc = "Create a new tab in CWD" },
+  # { on = [
+  #   "t",
+  #   "r",
+  # ], run = "tab_rename --interactive", desc = "Rename current tab" },
+
 
   { on = "1", run = "tab_switch 0", desc = "Switch to first tab" },
   { on = "2", run = "tab_switch 1", desc = "Switch to second tab" },
@@ -357,8 +292,82 @@ keymap = [
   { on = "<F1>", run = "help", desc = "Open help" },
 ]
 
-[tasks]
+# vfs
+[[mgr.prepend_keymap]]
+on = ["g", "p"]
+run = "cd sftp://honor/storage"
+desc = "Go to Honor"
 
+[[mgr.prepend_keymap]]
+on = "<F9>"
+run = "plugin mediainfo -- toggle-metadata"
+desc = "Toggle media preview metadata"
+
+# 关闭/开启预览
+[[mgr.prepend_keymap]]
+on = "T"
+run = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
+
+# 最大化预览
+[[mgr.prepend_keymap]]
+on = "<C-t>"
+run = "plugin toggle-pane max-preview"
+desc = "Maximize or restore the preview pane"
+
+# open pwsh
+[[mgr.prepend_keymap]]
+# on   = "<C-s>"
+on = "!"
+for = "windows"
+run = 'shell "nu" --block'
+desc = "Open NuShell here"
+
+# 跳转到当前目录的第一个文件位置
+[[mgr.prepend_keymap]]
+on = ["F"]
+run = "plugin  first-non-directory"
+desc = "Jumps to the first file"
+
+# 一次ESC关掉输入面板(不进入Vi模式)
+# [[input.prepend_keymap]]
+# on   = "<Esc>"
+# run  = "close"
+# desc = "Cancel input"
+
+# Diff the selected file with the hovered file, create a living patch, and copy it to the clipboard.
+[[mgr.prepend_keymap]]
+on = "<C-A-d>"
+run = "plugin diff"
+desc = "Diff the selected with the hovered file"
+
+# 使用系统剪贴板
+[[mgr.prepend_keymap]]
+on = "<C-y>"
+run = ["plugin system-clipboard"]
+
+# duckdb
+# [[mgr.prepend_keymap]]
+# on = "H"
+# run = "plugin duckdb -1"
+# desc = "Scroll one column to the left"
+
+# [[mgr.prepend_keymap]]
+# on = "L"
+# run = "plugin duckdb +1"
+# desc = "Scroll one column to the right"
+
+# [[mgr.prepend_keymap]]
+# on = ["g", "o"]
+# run = "plugin duckdb -open"
+# desc = "open with duckdb"
+
+# [[manager.prepend_keymap]]
+# on = ["g", "u"]
+# run = "plugin duckdb -ui"
+# desc = "open with duckdb ui"
+
+[tasks]
 keymap = [
   { on = "<Esc>", run = "close", desc = "Close task manager" },
   { on = "<C-[>", run = "close", desc = "Close task manager" },
@@ -380,7 +389,6 @@ keymap = [
 ]
 
 [spot]
-
 keymap = [
   { on = "<Esc>", run = "close", desc = "Close the spot" },
   { on = "<C-[>", run = "close", desc = "Close the spot" },
@@ -406,7 +414,6 @@ keymap = [
 ]
 
 [pick]
-
 keymap = [
   { on = "<Esc>", run = "close", desc = "Cancel pick" },
   { on = "<C-[>", run = "close", desc = "Cancel pick" },
@@ -425,7 +432,6 @@ keymap = [
 ]
 
 [input]
-
 keymap = [
   { on = "<C-c>", run = "close", desc = "Cancel input" },
   { on = "<Enter>", run = "close --submit", desc = "Submit input" },
@@ -473,15 +479,15 @@ keymap = [
 
   # Word-wise movement
   { on = "b", run = "backward", desc = "Move back to the start of the current or previous word" },
-  { on = "B", run = "backward --far", desc = "Move back to the start of the current or previous WORD" },
+  { on = "B", run = "backward wide", desc = "Move back to the start of the current or previous WORD" },
   { on = "w", run = "forward", desc = "Move forward to the start of the next word" },
-  { on = "W", run = "forward --far", desc = "Move forward to the start of the next WORD" },
+  { on = "W", run = "forward wide", desc = "Move forward to the start of the next WORD" },
   { on = "e", run = "forward --end-of-word", desc = "Move forward to the end of the current or next word" },
-  { on = "E", run = "forward --far --end-of-word", desc = "Move forward to the end of the current or next WORD" },
-  { on = "<A-b>", run = "backward", desc = "Move back to the start of the current or previous word" },
-  { on = "<A-f>", run = "forward --end-of-word", desc = "Move forward to the end of the current or next word" },
-  { on = "<C-Left>", run = "backward", desc = "Move back to the start of the current or previous word" },
-  { on = "<C-Right>", run = "forward --end-of-word", desc = "Move forward to the end of the current or next word" },
+  { on = "E", run = "forward wide --end-of-word", desc = "Move forward to the end of the current or next WORD" },
+  { on = "<A-b>", run = "backward lean", desc = "Move back to the start of the current or previous word" },
+  { on = "<A-f>", run = "forward lean --end-of-word", desc = "Move forward to the end of the current or next word" },
+  { on = "<C-Left>", run = "backward lean", desc = "Move back to the start of the current or previous word" },
+  { on = "<C-Right>", run = "forward lean --end-of-word", desc = "Move forward to the end of the current or next word" },
 
   # Line-wise movement
   { on = "0", run = "move bol", desc = "Move to the BOL" },
@@ -549,7 +555,6 @@ keymap = [
 ]
 
 [confirm]
-
 keymap = [
   { on = "<Esc>", run = "close", desc = "Cancel the confirm" },
   { on = "<C-[>", run = "close", desc = "Cancel the confirm" },
@@ -571,7 +576,6 @@ keymap = [
 ]
 
 [cmp]
-
 keymap = [
   { on = "<C-c>", run = "close", desc = "Cancel completion" },
   { on = "<Tab>", run = "close --submit", desc = "Submit the completion" },
@@ -595,7 +599,6 @@ keymap = [
 ]
 
 [help]
-
 keymap = [
   { on = "<Esc>", run = "escape", desc = "Clear the filter, or hide the help" },
   { on = "<C-[>", run = "escape", desc = "Clear the filter, or hide the help" },

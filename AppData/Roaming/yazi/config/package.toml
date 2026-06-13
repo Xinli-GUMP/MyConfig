@@ -5,22 +5,22 @@ hash = "cdfe518db0bee0d2d03f36351b4de08d"
 
 [[plugin.deps]]
 use = "lpanebr/yazi-plugins:first-non-directory"
-rev = "ca18a2c"
-hash = "681abc0948734f7ef7e30b92cafa3b28"
+rev = "ea50bee"
+hash = "451fa198c0d4c3eecf34429b1106a60e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "4ffa48f"
-hash = "dec79a43f91c9eb71243aa7690dffded"
+rev = "598cdb6"
+hash = "1e3b6c8b03dae81c3672ec9e9700b666"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:diff"
-rev = "4ffa48f"
+rev = "598cdb6"
 hash = "8f1088536824d36712c588e5c9ef5c28"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "4ffa48f"
+rev = "598cdb6"
 hash = "77c0dd89349f367282c5ea1999754915"
 
 [[plugin.deps]]
@@ -30,20 +30,25 @@ hash = "5112de4ea9ce83c9b6aa748b3fad665d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "4ffa48f"
+rev = "598cdb6"
 hash = "cdc2f9417e2f0785dfd3c9871b8738bb"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "49f5ab7"
-hash = "2434a843b293d5b7da5c39d7e4cebaca"
+rev = "a6d30a1"
+hash = "cb4f1eebbd2315e33f38f2694c0158e4"
+
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "a837101"
+hash = "d396365cef932fce588b80df69438f2e"
 
 [[flavor.deps]]
 use = "Chromium-3-Oxide/everforest-medium"
-rev = "4eede31"
-hash = "6b41c6cc57ba03bb2ef0bad18837f849"
+rev = "e1ead7b"
+hash = "774b4f996ea82cf49797435c523d06aa"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
-rev = "0670801"
+rev = "0f9204b"
 hash = "fee9eeb8bf3ac3ed251812cbc0452bbd"
