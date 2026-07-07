@@ -45,18 +45,16 @@ markdown = [
 ]
 
 extract = [
-  # { run = '7z x %1 -o.', block = true, desc = "Extract to a folder", for = "windows" },
-  # { run = '7z e %1 -o.', block = true, desc = "Extract here", for = "windows" },
-  # 独立进程
-  { run = 'start cmd /c "cd /d %cd% && 7z x "%s" -o." || pause', orphan = true, desc = "Extract here", for = "windows" },
-  { run = 'start cmd /c "for %F in ("%1") do (7z x "%F" -o"%~dpnF" || pause)"', orphan = true, desc = "Extract to folder", for = "windows" },
+  { run = '7z x %s1 -o.', block = true, desc = "Extract here", for = "windows" },
+  # { run = 'start cmd /c "cd /d %cd% && 7z x "%s" -o." || pause', orphan = true, desc = "Extract here", for = "windows" },
+  { run = '7z x %s -o*', block = true, desc = "Extract to folder", for = "windows" },
+  # { run = 'start cmd /c "for %F in ("%1") do (7z x "%F" -o"%~dpnF" || pause)"', orphan = true, desc = "Extract to folder", for = "windows" },
   { run = "7zFM.exe %s1", orphan = true, desc = "Run 7z GUI", for = "windows" },
 ]
 
 compress = [
-  # { run = '7z a %1.7z %*', desc = "Compress to 7z", for = "windows" },
-  # 独立进程
-  { run = 'start cmd /c "cd /d %cd% && 7z a %s1.7z %s" || pause', orphan = true, desc = "Compress to 7z", for = "windows" },
+  # { run = 'start cmd /c "cd /d %cd% && 7z a %s1.7z %s" || pause', orphan = true, desc = "Compress to 7z", for = "windows" },
+  { run = '7z a %s1.7z %s', orphan = true, desc = "Compress to 7z", for = "windows" },
 ]
 
 play = [
@@ -64,8 +62,12 @@ play = [
   # {run = "D:/portableApp/MusicBee/MusicBee.exe %s", orphan = true, desc = "MusicBee", for = "windows"}
 ]
 
+Browser = [
+  { run = "brave %s", orphan = true, desc = "Browser", for = "windows" },
+]
+
 quickLook = [
-  { run = "D:/portableApp/QuickLook-3.7.3/QuickLook.exe %s", desc = "QuickLook", for = "windows" },
+  { run = "D:/portableApp/QuickLook-3.7.3/QuickLook.exe %s", orphan = true, desc = "QuickLook", for = "windows" },
 ]
 
 PDF = [
@@ -84,7 +86,7 @@ block = true
 [open]
 rules = [
   # Folder
-  { url = "*/", use = [
+  { mime = "*/", use = [
     "open",
     "reveal",
     "compress",
@@ -94,11 +96,14 @@ rules = [
   # { mime = "text/markdown", use = [
   #   "markdown",
   # ] },
+  { mime = "text/html", use = [
+    "Browser",
+    "edit",
+  ] },
   # Text
   { mime = "text/*", use = [
     "edit",
     "compress",
-    "quickLook",
   ] },
   { mime = "application/xml", use = [
     "edit",
@@ -107,23 +112,23 @@ rules = [
   { mime = "image/*", use = [
     "open",
     "reveal",
+    "compress",
   ] },
   # Media
   { mime = "{audio,video}/*", use = [
     "open",
     "reveal",
-    "quickLook",
   ] },
   # Archive
   { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [
     "extract",
     "reveal",
+    "compress",
   ] },
   # JSON
   { mime = "application/{json,ndjson}", use = [
     "edit",
     "reveal",
-    "quickLook",
   ] },
   { mime = "*/javascript", use = [
     "edit",
@@ -141,6 +146,7 @@ rules = [
   { mime = "inode/empty", use = [
     "edit",
     "open",
+    "compress",
     "reveal",
   ] },
   # Fallback
@@ -189,7 +195,7 @@ prepend_preloaders = [
   # { url = "*.json", run = "duckdb", multi = false },
   # { url = "*.parquet", run = "duckdb", multi = false },
   # { url = "*.txt", run = "duckdb", multi = false },
-  { url = "*.xlsx", run = "duckdb", multi = false },
+  # { url = "*.xlsx", run = "duckdb", multi = false },
 ]
 
 prepend_previewers = [
