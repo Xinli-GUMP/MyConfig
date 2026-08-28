@@ -1,7 +1,7 @@
 # config.nu
 #
 # Installed by:
-# version = "0.111.0"
+# version = "0.114.1"
 #
 # This file is used to override default Nushell settings, define
 # (or import) custom commands, or run any other startup tasks.
@@ -18,6 +18,8 @@
 #     config nu --doc | nu-highlight | less -R
 
 use std/dirs
+use uv.nu *
+use himalaya.nu *
 
 # ==========================================
 # 1. 基础环境变量与提示符微调
@@ -32,7 +34,7 @@ $env.PROMPT_INDICATOR_VI_NORMAL = {|| "" }
 $env.config.show_banner = false
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
-$env.confg.completions.algorithm = "fuzzy"
+$env.config.completions.algorithm = "fuzzy"
 
 $env.config.cursor_shape = {
     emacs: line      # 默认模式强制为竖线
@@ -48,22 +50,11 @@ alias dir = ls
 alias vi = nvim
 alias lg = lazygit
 alias ipy = ipython
-alias q = exit
+# alias q = exit
 alias g++ = ^g++ -g -std=c++23 -finput-charset=UTF-8 -fexec-charset=UTF-8
 alias clang++ = ^clang++ -g -std=c++23 -fuse-ld=lld -finput-charset=UTF-8 -fexec-charset=UTF-8
-
-# ==========================================
-# 5. 自定义函数与核心工具链
-# ==========================================
-
-# 包装 eza 替代原生 ls
-def ls [...args] {
-    ^eza --icons --classify --color-scale --group-directories-first ...$args
-}
-
-def ll [...args] {
-    ^eza --icons --color-scale --classify --group-directories-first --time-style long-iso -l ...$args
-}
+alias ls = ^eza --icons --classify --color-scale --group-directories-first
+alias ll = ^eza --icons --color-scale --classify --group-directories-first --time-style long-iso -l
 
 # yazi
 def --env y [...args] {
@@ -74,20 +65,53 @@ def --env y [...args] {
         cd $cwd
     }
     rm -fp $tmp
-    print -n "\e[?1049l\e[2J\e[H"
+    # print -n "\e[?1049l\e[2J\e[H"
 }
 
 # fzf 预览流
 def fzf [...args] {
-    ^fzf --preview 'bat --style=numbers --color=always --line-range :100 {}' ...$args
+    ^fzf -m --preview 'bat --style=numbers --color=always --line-range :100 {}' ...$args
 }
 
 # 模糊进程kill
 def fkill [] {
-    let out = (ps | select pid name cpu mem | to tsv | ^fzf --layout=reverse --header-lines=1 | complete)
-    if $out.exit_code == 0 {
-        let target_pid = ($out.stdout | split row "\t" | first | str trim | into int)
-        kill -f -q $target_pid
+    # 1. 构造固定列宽的对齐表头
+    let header = $"("pid" | fill -w 8) ("name" | fill -w 30) ("cpu(%)" | fill -w 8 -a right)   ("mem" | fill -w 10 -a right)"
+
+    # 2. 对数据进行格式化与定宽填充
+    let rows = (
+        ps
+        | sort-by -r cpu mem
+        | update cpu { math round --precision 1 }
+        | each { |row|
+            let pid  = ($row.pid | into string | fill -w 8)
+            let name = ($row.name | into string | fill -w 30)
+            let cpu  = ($row.cpu | into string | fill -w 8 -a right)
+            let mem  = ($row.mem | into string | fill -w 10 -a right)
+            $"($pid) ($name) ($cpu)   ($mem)"
+        }
+    )
+
+    let input_text = ([$header] | append $rows | str join (char newline))
+
+    # 3. 送入 fzf 交互
+    let out = (
+        $input_text
+        | ^fzf -m --layout=reverse --header-lines=1 --prompt="Fkill > "
+        | complete
+    )
+
+    # 4. 解析选中的 PID 并批量强杀
+    if $out.exit_code == 0 and ($out.stdout | str trim | is-not-empty) {
+        let target_pids = (
+            $out.stdout
+            | lines
+            | each { |line|
+                # 按连续空格拆分，提取第一列 PID
+                $line | split row " " | where { not ($in | is-empty) } | first | into int
+            }
+        )
+        kill -f -q ...$target_pids
     }
 }
 
@@ -117,42 +141,6 @@ def p2c [] {
 def weather [city: string = fengcheng] {
    curl wttr.in/($city)?lang=zh
 }
-
-# ==========================================
-# 6. FZF 快捷键绑定 (Ctrl+R / Ctrl+T / Ctrl+D)
-# ==========================================
-$env.config.keybindings = ($env.config.keybindings | append [
-    {
-        name: fzf_history
-        modifier: control
-        keycode: char_r
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "let out = (history | get command | reverse | uniq | str join (char nl) | ^fzf --no-sort --layout=reverse --height=40% | complete); if $out.exit_code == 0 { commandline edit --replace ($out.stdout | str trim) }"
-        }
-    },
-    {
-        name: fzf_file_search
-        modifier: control
-        keycode: char_t
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "let out = (^fzf --layout=reverse --height=40% | complete); if $out.exit_code == 0 { commandline edit --insert ($out.stdout | str trim) }"
-        }
-    },
-    {
-        name: fzf_cd
-        modifier: control
-        keycode: char_d
-        mode: [emacs, vi_insert, vi_normal]
-        event: {
-            send: executehostcommand
-            cmd: "let out = (^fzf --walker=dir --layout=reverse --height=40% | complete); if $out.exit_code == 0 { cd ($out.stdout | str trim) }"
-        }
-    }
-])
 
 # ==========================================
 # 7. 交换 Tab 和 Ctrl+Space 的菜单触发逻辑
