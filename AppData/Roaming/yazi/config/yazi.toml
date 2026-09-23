@@ -1,5 +1,6 @@
 # A TOML linter such as Tombi can use this schema to validate your config.
 # If you encounter any problems, please file an issue at https://github.com/yazi-rs/schemas.
+# Default config https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi-default.toml
 
 #:schema https://yazi-rs.github.io/schemas/yazi.json
 
@@ -45,21 +46,25 @@ markdown = [
 ]
 
 extract = [
-  { run = '7z x %s1 -o.', block = true, desc = "Extract here", for = "windows" },
+  { run = "7z x %s1 -o.", block = true, desc = "Extract here", for = "windows" },
   # { run = 'start cmd /c "cd /d %cd% && 7z x "%s" -o." || pause', orphan = true, desc = "Extract here", for = "windows" },
-  { run = '7z x %s -o*', block = true, desc = "Extract to folder", for = "windows" },
+  { run = "7z x %s -o*", block = true, desc = "Extract to folder", for = "windows" },
   # { run = 'start cmd /c "for %F in ("%1") do (7z x "%F" -o"%~dpnF" || pause)"', orphan = true, desc = "Extract to folder", for = "windows" },
   { run = "7zFM.exe %s1", orphan = true, desc = "Run 7z GUI", for = "windows" },
 ]
 
 compress = [
   # { run = 'start cmd /c "cd /d %cd% && 7z a %s1.7z %s" || pause', orphan = true, desc = "Compress to 7z", for = "windows" },
-  { run = '7z a %s1.7z %s', orphan = true, desc = "Compress to 7z", for = "windows" },
+  { run = "7z a %s1.7z %s", orphan = true, desc = "Compress to 7z", for = "windows" },
 ]
 
-play = [
-  # {run = 'E:/Tools/PotPlayerPortable64-230208/App/PotPlayer64/PotPlayer64.exe "%s"', orphan = true, desc = "potplayer", for = "windows"},
-  # {run = "D:/portableApp/MusicBee/MusicBee.exe %s", orphan = true, desc = "MusicBee", for = "windows"}
+audio = [
+  { run = 'ffplay -autoexit -loglevel quiet %s', orphan = true, desc = "FFPlay", for = "windows" },
+  { run = "D:/portableApp/MusicBee/MusicBee.exe %s", orphan = true, desc = "MusicBee", for = "windows" },
+]
+
+video = [
+  { run = 'D:/portableApp/PotPlayerPortable64-230208/App/PotPlayer64/PotPlayerMini64.exe %s', orphan = true, desc = "Potplayer", for = "windows" },
 ]
 
 Browser = [
@@ -71,7 +76,7 @@ quickLook = [
 ]
 
 PDF = [
-  { run = '"E:\Adobe\DC\Acrobat DC\Acrobat\Acrobat.exe" "%s"', orphan = true, desc = "Acrobat", for = "windows" },
+  { run = '"C:/Program Files/SumatraPDF/SumatraPDF.exe" "%s"', orphan = true, desc = "Sumatra", for = "windows" },
 ]
 
 download = [
@@ -86,7 +91,7 @@ block = true
 [open]
 rules = [
   # Folder
-  { mime = "*/", use = [
+  { url = "*/", use = [
     "open",
     "reveal",
     "compress",
@@ -115,7 +120,13 @@ rules = [
     "compress",
   ] },
   # Media
-  { mime = "{audio,video}/*", use = [
+  { mime = "audio/*", use = [
+    "audio",
+    "open",
+    "reveal",
+  ] },
+  { mime = "video/*", use = [
+    "video",
     "open",
     "reveal",
   ] },
@@ -137,8 +148,8 @@ rules = [
 
   # PDF
   { mime = "application/pdf", use = [
-    "open",
     "PDF",
+    "open",
   ] },
   # Virtual file system
   { mime = "vfs/{absent,stale}", use = "download" },
@@ -181,7 +192,6 @@ fetchers = [
   { url = "remote://*", run = "mime.remote", prio = "high", group = "mime" },
 ]
 
-
 prepend_preloaders = [
   # { mime = "audio/*",   run = "exifaudio"},
   # Replace magick, image, video with mediainfo
@@ -215,8 +225,8 @@ prepend_previewers = [
   # { url = "*.parquet", run = "duckdb" },
   # { url = "*.txt", run = "duckdb" },
   # { url = "*.xlsx", run = "duckdb" },
-  { url = "*.db", run = "duckdb" },
-  { url = "*.duckdb", run = "duckdb" },
+  # { url = "*.db", run = "duckdb" },
+  # { url = "*.duckdb", run = "duckdb" },
 
   # glow has a little lag
   # { url = "*.{md,markdown,mdown}", run = "glow" },
@@ -296,6 +306,7 @@ previewers = [
   { url = "*", run = "file" },
 ]
 
+# mime-ext.yazi
 [[plugin.prepend_fetchers]]
 group = "mime"
 url = "local://*"
