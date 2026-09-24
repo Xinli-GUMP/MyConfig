@@ -1,0 +1,31 @@
+patch:
+  # 默认英文输入状态
+  switches/@0/reset: 1
+  grammar:
+    language: wanxiang-lts-zh-hans
+    collocation_min_length: 2
+    collocation_max_length: 8
+    non_collocation_penalty: -4
+    collocation_penalty: -14
+  translator/contextual_suggestions: true
+  translator/max_homophones: 7
+  translator/max_homographs: 4
+
+  # 默认使用部分英文标点替代中文标点
+  punctuator/half_shape/+:
+    "?": "?"
+    "!": "!"
+    "$": "$"
+    "^": "^"
+    "(": "("
+    ")": ")"
+    "_": "_"
+    "{": "{"
+    "}": "}"
+    "[": "["
+    "]": "]"
+    "/": "/"
+    ";": ";"
+    "'": "'"
+    '"': '"'
+    ":": ":"
