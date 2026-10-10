@@ -8,3 +8,9 @@ patch:
   "style/color_scheme": lost_temple
   show_notifications_time: 300
   "style/horizontal": false
+  # 默认英文输入法状态
+  "app_options/WindowsTerminal.exe/ascii_mode": true
+  "app_options/explorer.exe/ascii_mode": true
+  "app_options/StartMenuExperienceHost.exe/ascii_mode": true
+  "app_options/zed.exe/ascii_mode": true
+  "app_options/goldendict.exe/ascii_mode": true

@@ -31,39 +31,45 @@ return {
       vim.g.everforest_transparent_background = 2
       vim.g.everforest_sign_column_background = "liner"
       vim.g.everforest_diagnostic_virtual_text = "highlighted"
+      vim.g.everforest_current_word = "underline"
+      -- vim.g.everforest_float__style = "dim"
     end,
   },
-  --
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   priority = 1000,
-  --   lazy = false,
-  --   opts = {
-  --     transparent_background = true,
-  --     flavour = "frappe", -- latte, frappe, macchiato, mocha
-  --   },
-  -- },
-  {
-    "Mofiqul/vscode.nvim",
-    lazy = false, -- 必须设为 false，确保启动时加载
-    priority = 1000, -- 优先级设为最高，确保最先加载
-    config = function()
-      local c = require("vscode.colors").get_colors()
-      require("vscode").setup({
-        -- 可选配置
-        transparent = true, -- 是否透明背景
-        italic_comments = false, -- 注释斜体
-        underline_links = true,
-        -- Apply theme colors to terminal
-        terminal_colors = true,
-        -- disable_nvimtree_bg = true, -- 去掉侧边栏背景色
 
-        -- 风格选择: 'dark' (经典), 'light' (浅色), 'dark_modern' (新版默认)
-        style = "dark",
-      })
-    end,
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      transparent_background = true,
+      flavour = "frappe", -- latte, frappe, macchiato, mocha
+      styles = {
+        keywords = { "italic" },
+        types = { "italic" },
+      },
+    },
   },
+  -- {
+  --   "Mofiqul/vscode.nvim",
+  --   lazy = false, -- 必须设为 false，确保启动时加载
+  --   priority = 1000, -- 优先级设为最高，确保最先加载
+  --   config = function()
+  --     local c = require("vscode.colors").get_colors()
+  --     require("vscode").setup({
+  --       -- 可选配置
+  --       transparent = true, -- 是否透明背景
+  --       italic_comments = false, -- 注释斜体
+  --       underline_links = true,
+  --       -- Apply theme colors to terminal
+  --       terminal_colors = true,
+  --       -- disable_nvimtree_bg = true, -- 去掉侧边栏背景色
+  --
+  --       -- 风格选择: 'dark' (经典), 'light' (浅色)
+  --       style = "dark",
+  --     })
+  --   end,
+  -- },
 
   {
     "LazyVim/LazyVim",

@@ -1,6 +1,47 @@
 patch:
   # 默认英文输入状态
-  switches/@0/reset: 1
+  # switches/@0/reset: 1 # 全局
+
+  speller:
+    algebra:
+      - erase/^xx$/
+      - derive/^([jqxy])u$/$1v/
+      # 模糊音
+      - derive/^([zcs])h/$1/ # zh* ch* sh* 派生出 z* c* s*
+      # - derive/^([zcs])([^h])/$1h$2/ # z* c* s*    派生出 zh* ch* sh*
+      - derive/in$/ing/
+      - derive/ing$/in/
+
+      - derive/^([aoe])([ioun])$/$1$1$2/
+      - xform/^([aoe])(ng)?$/$1$1$2/
+      - xform/iu$/Ⓠ/
+      - xform/(.)ei$/$1Ⓦ/
+      - xform/uan$/Ⓡ/
+      - xform/[uv]e$/Ⓣ/
+      - xform/un$/Ⓨ/
+      - xform/^sh/Ⓤ/
+      - xform/^ch/Ⓘ/
+      - xform/^zh/Ⓥ/
+      - xform/uo$/Ⓞ/
+      - xform/ie$/Ⓟ/
+      - xform/(.)i?ong$/$1Ⓢ/
+      - xform/ing$|uai$/Ⓚ/
+      - xform/(.)ai$/$1Ⓓ/
+      - xform/(.)en$/$1Ⓕ/
+      - xform/(.)eng$/$1Ⓖ/
+      - xform/[iu]ang$/Ⓛ/
+      - xform/(.)ang$/$1Ⓗ/
+      - xform/ian$/Ⓜ/
+      - xform/(.)an$/$1Ⓙ/
+      - xform/(.)ou$/$1Ⓩ/
+      - xform/[iu]a$/Ⓧ/
+      - xform/iao$/Ⓝ/
+      - xform/(.)ao$/$1Ⓒ/
+      - xform/ui$/Ⓥ/
+      - xform/in$/Ⓑ/
+      - xlit/ⓆⓌⓇⓉⓎⓊⒾⓄⓅⓈⒹⒻⒼⒽⒿⓀⓁⓏⓍⒸⓋⒷⓃⓂ/qwrtyuiopsdfghjklzxcvbnm/
+    # - abbrev/^(.).+$/$1/  # 首字母简拼，开启后会导致 3 个字母时 kj'x 变成 k'jx 的问题
+
   grammar:
     language: wanxiang-lts-zh-hans
     collocation_min_length: 2

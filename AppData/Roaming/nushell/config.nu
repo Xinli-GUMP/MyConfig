@@ -17,9 +17,16 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
-use std/dirs
-use uv.nu *
-use himalaya.nu *
+# use std/dirs
+# use himalaya.nu *
+source ./nu_scripts/custom-completions/uv/uv-completions.nu
+use ./nu_scripts/custom-completions/git/git-completions.nu *
+use ./nu_scripts/custom-completions/rg/rg-completions.nu *
+use ./nu_scripts/custom-completions/gh/gh-completions.nu *
+use ./nu_scripts/custom-completions/winget/winget-completions.nu *
+use ./nu_scripts/custom-completions/ssh/ssh-completions.nu *
+source ./nu_scripts/custom-completions/npm/npm-completions.nu
+source ./nu_scripts/custom-completions/auto-generate/completions/7z.nu
 
 # ==========================================
 # 1. 基础环境变量与提示符微调
@@ -34,7 +41,7 @@ $env.PROMPT_INDICATOR_VI_NORMAL = {|| "" }
 $env.config.show_banner = false
 $env.config.edit_mode = "vi"
 $env.config.buffer_editor = "nvim"
-$env.config.completions.algorithm = "fuzzy"
+$env.config.completions.algorithm = "substring"
 
 $env.config.cursor_shape = {
     emacs: line      # 默认模式强制为竖线
@@ -47,9 +54,9 @@ $env.config.cursor_shape = {
 # 4. 基础别名映射 (Alias)
 # ==========================================
 alias dir = ls
-alias vi = nvim
-alias lg = lazygit
-alias ipy = ipython
+alias vi = ^nvim
+alias lg = ^lazygit
+alias ipy = ^ipython
 # alias q = exit
 alias g++ = ^g++ -g -std=c++23 -finput-charset=UTF-8 -fexec-charset=UTF-8
 alias clang++ = ^clang++ -g -std=c++23 -fuse-ld=lld -finput-charset=UTF-8 -fexec-charset=UTF-8
@@ -122,7 +129,7 @@ def c2p [] {
         print $"(ansi red_bold)❌ 错误: 电脑剪贴板当前为空，取消发送(ansi reset)"
         return
     }
-    ^ssh honor "termux-clipboard-set" $text
+    ^ssh honor 'termux-clipboard-set' $text
     print $text
 }
 
@@ -139,14 +146,27 @@ def p2c [] {
 
 # 天气
 def weather [city: string = fengcheng] {
-   curl wttr.in/($city)?lang=zh
+   http get wttr.in/($city)?lang=zh
+}
+
+def timer [] {
+  mut cnt = 0sec
+  try {
+    while true {
+      $cnt += 1sec
+      print $cnt
+      sleep 1sec
+    }
+  }
+  print $"计时已停止，共计: ($cnt)"
 }
 
 # ==========================================
-# 7. 交换 Tab 和 Ctrl+Space 的菜单触发逻辑
+# 7. KeyMap
 # ==========================================
 $env.config.keybindings = ($env.config.keybindings | append [
-    {
+  # 交换 Tab 和 Ctrl+Space 的菜单触发逻辑
+   {
         name: trigger_ide_menu
         modifier: none
         keycode: tab
@@ -159,6 +179,7 @@ $env.config.keybindings = ($env.config.keybindings | append [
             ]
         }
     },
+
     {
         name: trigger_classic_menu
         modifier: control
@@ -171,42 +192,93 @@ $env.config.keybindings = ($env.config.keybindings | append [
                 { edit: complete }
             ]
         }
+    },
+
+    # -> 单词补全
+    {
+      name: smart_right
+      modifier: none
+      keycode: right
+      mode: [emacs, vi_insert]
+      event: {
+        until: [
+          # 优先动作：有灰色提示时，只补全到下一个空格/单词边界
+          { send: HistoryHintWordComplete }
+          # 兜底动作：若当前没有灰色提示，恢复右移一个字符行为
+          { edit: MoveRight }
+        ]
+      }
+    },
+
+  # C-[ switch to vi_normal mode
+  {
+    name: vi_normal_mode
+    modifier: control
+    keycode: 'char_['
+    mode: vi_insert
+    event: { send: SwitchMode
+      mode : vi_normal
     }
+  },
+
+  # 4. Insert 模式下按 Ctrl + u 向左清空到行首，Ctrl + k 向右清空到行尾
+  {
+    name: insert_cut_to_start
+    modifier: control
+    keycode: char_u
+    mode: vi_insert
+    event: { edit: CutFromLineStart }
+  },
+  {
+    name: insert_cut_to_end
+    modifier: control
+    keycode: char_k
+    mode: vi_insert
+    event: { edit: CutToLineEnd }
+  }
 ])
 
 # ==========================================
 # 8. 注入定制语法高亮 (Tokyo Night 风格)
 # ==========================================
-$env.config.color_config = ($env.config.color_config | default {} | merge {
-    shape_garbage: "#f7768e"          # 错误 (Error) - 红色
-    shape_string: "#9ece6a"           # 字符串 (String) - 绿色
-    shape_string_interpolation: "#2ac3de" # 包含变量的字符串
-    shape_int: "#ff9e64"              # 整数 - 橘红
-    shape_float: "#ff9e64"            # 浮点数 - 橘红
-    shape_variable: "#7dcfff"         # 变量 (Variable) - 浅蓝
-    shape_literal: "#ADFF2F"          # 默认前景色
+$env.config.color_config = ($env.config.color_config | merge {
+  # shape_garbage: "#f7768e"          # 错误 (Error) - 红色
+  shape_string: "#9ece6a"           # 字符串 (String) - 绿色
+  shape_string_interpolation: "#2ac3de" # 包含变量的字符串
+  shape_int: "#ff9e64"              # 整数 - 橘红
+  shape_float: "#ff9e64"            # 浮点数 - 橘红
+  shape_variable: "#7dcfff"         # 变量 (Variable) - 浅蓝
+  shape_literal: "#ADFF2F"          # 默认前景色
 
-    shape_internalcall: "#FFF000"     # 内部命令 - 金色
-    shape_external: "#FFF000"         # 外部命令 - 金色
-    shape_external_resolved: "#FFF000" # 已解析的外部命令 - 金色
-    shape_keyword: "#bb9af7"          # 关键字 (Keyword) - 紫色
-    
-    shape_flag: "#FF4500"             # 参数 (Parameter) - 橙红
-    shape_operator: "#89ddff"         # 操作符 (Operator) - 青色
-    shape_pipe: "#89ddff"             # 管道符 |
-    shape_redirection: "#89ddff"      # 重定向 >
+  shape_internalcall: "#FFF000"     # 内部命令 - 金色
+  shape_external: "#FFF000"         # 外部命令 - 金色
+  shape_external_resolved: "#FFF000" # 已解析的外部命令 - 金色
+  shape_keyword: "#bb9af7"          # 关键字 (Keyword) - 紫色
 
-    cell_path: "#73daca"              # 属性成员 (Member) - 蓝绿
-    shape_filepath: "#7dcfff"         # 文件路径
-    shape_directory: "#7dcfff"        # 目录
-    shape_globpattern: "#2ac3de"      # 通配符 (*, ?)
+  shape_flag: "#FF4500"             # 参数 (Parameter) - 橙红
+  shape_operator: "#89ddff"         # 操作符 (Operator) - 青色
+  shape_pipe: "#89ddff"             # 管道符 |
+  shape_redirection: "#89ddff"      # 重定向 >
 
-    shape_signature: "#2ac3de"        # 类型签名 (Type) - 青色
-    shape_comment: "#565f89"          # 注释 (Comment) - 灰蓝
+  cell_path: "#73daca"              # 属性成员 (Member) - 蓝绿
+  shape_filepath: "#7dcfff"         # 文件路径
+  shape_directory: "#7dcfff"        # 目录
+  shape_globpattern: "#2ac3de"      # 通配符 (*, ?)
+
+  shape_signature: "#2ac3de"        # 类型签名 (Type) - 青色
+  shape_comment: "#565f89"          # 注释 (Comment) - 灰蓝
 })
 
 # ==========================================
 # 9. 外部动态补全注入 (Carapace)
 # ==========================================
-source $"($nu.cache-dir)/carapace.nu"
-$env.CARAPACE_MATCH = "CASE_INSENSITIVE"
+# source $"($nu.cache-dir)/my_carapace.nu"
+# $env.CARAPACE_MATCH = "CASE_INSENSITIVE"
+
+
+# argc-completions
+# $env.ARGC_COMPLETIONS_ROOT = 'C:\Users\86136\Documents\PowerShell\Scripts\argc-completions'
+# $env.ARGC_COMPLETIONS_PATH = ($env.ARGC_COMPLETIONS_ROOT + '\completions\windows;' + $env.ARGC_COMPLETIONS_ROOT + '\completions')
+# $env.Path = ($env.Path | prepend ($env.ARGC_COMPLETIONS_ROOT + '\bin'))
+# argc --argc-completions nushell | save -f 'C:\Users\86136\Documents\PowerShell\Scripts\argc-completions\tmp\argc-completions.nu'
+# source 'C:\Users\86136\Documents\PowerShell\Scripts\argc-completions\tmp\argc-completions.nu'
