@@ -10,18 +10,18 @@ hash = "451fa198c0d4c3eecf34429b1106a60e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "598cdb6"
-hash = "1e3b6c8b03dae81c3672ec9e9700b666"
+rev = "603fa36"
+hash = "acf841be033b88195a008c65fd973883"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:diff"
-rev = "598cdb6"
-hash = "8f1088536824d36712c588e5c9ef5c28"
+rev = "603fa36"
+hash = "9e4c272c2e4d9a0df50abb69ae93d4ab"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "598cdb6"
-hash = "77c0dd89349f367282c5ea1999754915"
+rev = "603fa36"
+hash = "a0d570162ec1ae6e3945f547c3d784f9"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
@@ -30,18 +30,23 @@ hash = "5112de4ea9ce83c9b6aa748b3fad665d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "598cdb6"
-hash = "cdc2f9417e2f0785dfd3c9871b8738bb"
+rev = "603fa36"
+hash = "7d3b7f99e600fd7e77ebc5eb8423a897"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "a6d30a1"
-hash = "cb4f1eebbd2315e33f38f2694c0158e4"
+rev = "f1cec0b"
+hash = "be4689c11ec108bf10d36eb9cdd070d6"
 
 [[plugin.deps]]
 use = "Rolv-Apneseth/starship"
-rev = "a837101"
-hash = "d396365cef932fce588b80df69438f2e"
+rev = "ea92cf4"
+hash = "58159cb9c55262b110917d366070aa89"
+
+[[plugin.deps]]
+use = "AnirudhG07/custom-shell"
+rev = "6f68404"
+hash = "32558ab53db6009fb2b0c131c437a139"
 
 [[flavor.deps]]
 use = "Chromium-3-Oxide/everforest-medium"
@@ -50,5 +55,5 @@ hash = "774b4f996ea82cf49797435c523d06aa"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
-rev = "0f9204b"
-hash = "fee9eeb8bf3ac3ed251812cbc0452bbd"
+rev = "1183892"
+hash = "a8625ba18769fb8e6da99dc15e52c9ef"

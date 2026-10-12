@@ -14,6 +14,7 @@
 vim.keymap.set("i", "jk", "<Esc>", { desc = "Escape insert mode" })
 vim.keymap.set("i", "<C-BS>", "<C-w>", { desc = "Delete Word" })
 vim.keymap.set("i", "<C-CR>", "<Esc>o", { desc = "Insert line below" })
+vim.keymap.set("n", "gA", "<Cmd>normal! ga<CR>", { desc = "Show ASCII/Unicode value (Native)" })
 
 -- DO NOT USE `LazyVim.safe_keymap_set` IN YOUR OWN CONFIG!!
 -- use `vim.keymap.set` instead

@@ -1,5 +1,0 @@
-[sftp.honor]
-host = "192.168.0.3"
-user = "Irithyll"
-port = 8022
-password = "1121"

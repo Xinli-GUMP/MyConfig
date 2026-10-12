@@ -17,9 +17,21 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
-# 注入全局环境变量
-$env.https_proxy = "http://127.0.0.1:7890"
+# HTTP / HTTPS 代理
+$env.HTTP_PROXY = "http://127.0.0.1:7890"
+$env.HTTPS_PROXY = "http://127.0.0.1:7890"
 $env.http_proxy = "http://127.0.0.1:7890"
+$env.https_proxy = "http://127.0.0.1:7890"
+
+# 全局降级代理 (建议使用 socks5h:// 避免本地 DNS 污染)
+# $env.ALL_PROXY = "socks5h://127.0.0.1:7890"
+# $env.all_proxy = "socks5h://127.0.0.1:7890"
+
+# 绕过列表
+# $env.NO_PROXY = "localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,.local"
+# $env.no_proxy = "localhost,127.0.0.1,::1,192.168.0.0/16,10.0.0.0/8,.local"
+
+$env.SHELL = 'nu'
 $env.LANG = "zh_CN.UTF-8"
 $env.EDITOR = "nvim"
 $env.VISUAL = "nvim"

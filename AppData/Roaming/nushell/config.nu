@@ -54,6 +54,7 @@ $env.config.cursor_shape = {
 # 4. 基础别名映射 (Alias)
 # ==========================================
 alias dir = ls
+alias expl = explore
 alias vi = ^nvim
 alias lg = ^lazygit
 alias ipy = ^ipython
@@ -220,8 +221,7 @@ $env.config.keybindings = ($env.config.keybindings | append [
       mode : vi_normal
     }
   },
-
-  # 4. Insert 模式下按 Ctrl + u 向左清空到行首，Ctrl + k 向右清空到行尾
+  # Insert 模式下按 Ctrl + u 向左清空到行首，Ctrl + k 向右清空到行尾
   {
     name: insert_cut_to_start
     modifier: control
@@ -235,6 +235,15 @@ $env.config.keybindings = ($env.config.keybindings | append [
     keycode: char_k
     mode: vi_insert
     event: { edit: CutToLineEnd }
+  },
+  {
+    name: previous_word
+    modifier:control
+    keycode:char_h
+    mode : vi_insert
+    event:{
+      edit: MoveWordLeft
+    }
   }
 ])
 

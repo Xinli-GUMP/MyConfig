@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 -- my_opts
-vim.opt.fileencodings = { "utf-8", "gbk", "gb18030", "cp936", "latin1" }
+vim.opt.fileencodings = { "utf-8", "gbk", "gb18030", "cp936", "utf-16", "utf-16le", "latin1" }
 -- vim.opt.shell = "pwsh.exe -NoLogo"
 vim.opt.shell = "nu"
 -- 禁用 Neovim 内置 SQL 补全插件对按键的劫持
@@ -107,7 +107,7 @@ opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true -- Don't ignore case with capitals
-opt.smartindent = true -- Insert indents automatically
+opt.smartindent = false -- Insert indents automatically
 opt.smoothscroll = true
 opt.spelllang = { "en" }
 opt.splitbelow = true -- Put new windows below current
@@ -125,5 +125,4 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = true -- Disable line wrap
 
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
+vim.opt.cinoptions = "g0,:0,(0,W4"

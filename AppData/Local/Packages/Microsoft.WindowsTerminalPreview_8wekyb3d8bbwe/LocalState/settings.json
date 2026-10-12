@@ -119,6 +119,13 @@
         {
             "command":
             {
+                "action": "copy"
+            },
+            "id": "User.copy.224984B4"
+        },
+        {
+            "command":
+            {
                 "action": "newTab",
                 "index": 1
             },
@@ -200,7 +207,8 @@
                 "action": "swapPane",
                 "direction": "previous"
             },
-            "id": "User.swapPane.75247157"
+            "id": "User.swapPane.75247157",
+            "name": "\t"
         },
         {
             "command":
@@ -215,10 +223,12 @@
     "autoHideWindow": false,
     "centerOnLaunch": true,
     "compatibility.allowHeadless": false,
+    "compatibility.enableUnfocusedAcrylic": true,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultInputScope": "alphanumericHalfWidth",
     "defaultProfile": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
+    "disableAnimations": true,
     "firstWindowPreference": "defaultProfile",
     "initialCols": 137,
     "initialPosition": "60,60",
@@ -240,6 +250,10 @@
         {
             "id": null,
             "keys": "ctrl+shift+n"
+        },
+        {
+            "id": "Terminal.SwitchToTab2",
+            "keys": "ctrl+3"
         },
         {
             "id": "User.newTab.B7F682DF",
@@ -268,6 +282,10 @@
         {
             "id": null,
             "keys": "ctrl+shift+up"
+        },
+        {
+            "id": "Terminal.SwitchToTab6",
+            "keys": "ctrl+7"
         },
         {
             "id": null,
@@ -350,8 +368,16 @@
             "keys": "alt+w"
         },
         {
+            "id": "Terminal.SwapPanePrevious",
+            "keys": "alt+shift+w"
+        },
+        {
             "id": "User.moveFocus.F747588A",
             "keys": "alt+shift+j"
+        },
+        {
+            "id": "Terminal.SwitchToTab5",
+            "keys": "ctrl+6"
         },
         {
             "id": null,
@@ -384,6 +410,26 @@
         {
             "id": "Terminal.ToggleMarkMode",
             "keys": "alt+q"
+        },
+        {
+            "id": "Terminal.SwitchToTab0",
+            "keys": "ctrl+1"
+        },
+        {
+            "id": "Terminal.SwitchToTab1",
+            "keys": "ctrl+2"
+        },
+        {
+            "id": "Terminal.SwitchToTab4",
+            "keys": "ctrl+5"
+        },
+        {
+            "id": "Terminal.SwitchToTab7",
+            "keys": "ctrl+8"
+        },
+        {
+            "id": "Terminal.SwitchToTab3",
+            "keys": "ctrl+4"
         }
     ],
     "language": "zh-Hans",
@@ -419,22 +465,19 @@
             "adjustIndistinguishableColors": "always",
             "bellStyle": "window",
             "colorScheme": "My One Half Dark",
-            "cursorColor": "#98C379",
             "elevate": false,
             "experimental.rainbowSuggestions": true,
             "experimental.repositionCursorWithMouse": false,
             "font":
             {
-                "face": "JetBrainsMono Nerd Font Mono",
-                "features": {},
+                "face": "Maple Mono Normal NF CN",
                 "size": 13
             },
             "foreground": "#98C379",
-            "opacity": 80,
+            "opacity": 85,
             "pathTranslationStyle": "mingw",
             "scrollbarState": "hidden",
-            "startingDirectory": "%USERPROFILE%",
-            "useAcrylic": false
+            "startingDirectory": "E:/downloads"
         },
         "list":
         [
@@ -473,28 +516,16 @@
                 "commandline": "E:\\msys2\\msys2_shell.cmd -defterm -here -no-start -ucrt64",
                 "guid": "{b42fafd2-78b8-4679-93f6-8a8e103a8c48}",
                 "hidden": false,
-                "icon": "E:/msys2/clang64.ico",
+                "icon": "E:\\msys2\\ucrt64.ico",
                 "name": "MSYS2",
                 "startingDirectory": "%USERPROFILE%"
             },
             {
                 "colorScheme": "Campbell",
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": true,
+                "hidden": false,
                 "name": "Git Bash",
                 "source": "Git"
-            },
-            {
-                "guid": "{c9faf841-beda-5dbe-addd-87713aa99014}",
-                "hidden": true,
-                "name": "Developer Command Prompt for VS 2022",
-                "source": "Windows.Terminal.VisualStudio"
-            },
-            {
-                "guid": "{2a346dd6-55eb-516c-8cc7-4b2d9e596d2c}",
-                "hidden": true,
-                "name": "Developer PowerShell for VS 2022",
-                "source": "Windows.Terminal.VisualStudio"
             },
             {
                 "guid": "{15e5496d-199f-56b5-97ba-3e26e1ab0cd9}",
@@ -505,12 +536,16 @@
             {
                 "colorScheme": "My One Half Dark",
                 "cursorColor": "#DCDFE4",
+                "font":
+                {
+                    "face": "Maple Mono Normal NF CN"
+                },
                 "foreground": "#98C379",
                 "guid": "{47302f9c-1ac4-566c-aa3e-8cf29889d6ab}",
                 "hidden": false,
                 "name": "Nushell",
                 "source": "nu",
-                "tabColor": "#282C34"
+                "tabColor": "#98C379"
             }
         ]
     },
@@ -616,5 +651,7 @@
     "theme": "dark",
     "themes": [],
     "useAcrylicInTabRow": false,
-    "windowingBehavior": "useNew"
+    "warning.largePaste": true,
+    "warning.multiLinePaste": "always",
+    "windowingBehavior": "useAnyExisting"
 }

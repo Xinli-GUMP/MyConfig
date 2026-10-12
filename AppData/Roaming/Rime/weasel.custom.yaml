@@ -14,3 +14,7 @@ patch:
   "app_options/StartMenuExperienceHost.exe/ascii_mode": true
   "app_options/zed.exe/ascii_mode": true
   "app_options/goldendict.exe/ascii_mode": true
+  "app_options/Taskmgr.exe/ascii_mode": true
+  "app_options/ffplay.exe/ascii_mode": true
+  "app_options/MusicBee.exe/ascii_mode": true
+  "app_options/PotPlayerMini64.exe/ascii_mode": true
