@@ -1,6 +1,6 @@
 patch:
   # 默认英文输入状态
-  # switches/@0/reset: 1 # 全局
+  switches/@0/reset: 1 # 全局
 
   speller:
     algebra:

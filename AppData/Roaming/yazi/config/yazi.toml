@@ -25,11 +25,10 @@ markdown = [
 ]
 
 extract = [
-  { run = "7z x %s1 -o. || pause", block = true, desc = "Extract here", for = "windows" },
-  # { run = 'start cmd /c "cd /d %cd% && 7z x "%s" -o." || pause', orphan = true, desc = "Extract here", for = "windows" },
-  { run = "7z x %s -o* || pause", block = true, desc = "Extract to folder", for = "windows" },
-  # { run = 'start cmd /c "for %F in ("%1") do (7z x "%F" -o"%~dpnF" || pause)"', orphan = true, desc = "Extract to folder", for = "windows" },
-  { run = "7zFM.exe %s1", orphan = true, desc = "Run 7z GUI", for = "windows" },
+  { run = "ya pub extract --list %s", desc = "Extract here" },
+  # { run = "7z x %s1 -o. || pause", desc = "Extract here", for = "windows" },
+  # { run = "7z x %s -o* || pause", block = true, desc = "Extract to folder", for = "windows" },
+  # { run = "7zFM.exe %s1", orphan = true, desc = "Run 7z GUI", for = "windows" },
 ]
 
 compress = [
@@ -39,20 +38,17 @@ compress = [
 
 image = [
   { run = "ffplay -fs -loglevel quiet %s", orphan = true, desc = "FFPlay", for = "windows" },
+  { run = '"C:/Program Files/Honeyview/Honeyview.exe" %s', orphan = true, desc = "Honeyview", for = "windows" },
 ]
 
 audio = [
-  { run = "ffplay -autoexit -loglevel quiet %s", orphan = true, desc = "FFPlay", for = "windows" },
+  { run = "ffplay -loglevel quiet %s", orphan = true, desc = "FFPlay", for = "windows" },
   { run = "D:/portableApp/MusicBee/MusicBee.exe %s", orphan = true, desc = "MusicBee", for = "windows" },
 ]
 
 video = [
-  { run = "D:/portableApp/PotPlayerPortable64-230208/App/PotPlayer64/PotPlayerMini64.exe %s", orphan = true, desc = "Potplayer", for = "windows" },
   { run = "ffplay -loglevel quiet -fs %s", orphan = true, desc = "FFPlay", for = "windows" },
-]
-
-Browser = [
-  { run = "brave %s", orphan = true, desc = "Browser", for = "windows" },
+  { run = "D:/portableApp/PotPlayerPortable64-230208/App/PotPlayer64/PotPlayerMini64.exe %s", orphan = true, desc = "Potplayer", for = "windows" },
 ]
 
 quickLook = [
@@ -60,7 +56,12 @@ quickLook = [
 ]
 
 PDF = [
-  { run = '"C:/Program Files/SumatraPDF/SumatraPDF.exe" "%s"', orphan = true, desc = "Sumatra", for = "windows" },
+  { run = '"C:/Program Files/SumatraPDF/SumatraPDF.exe" %s', orphan = true, desc = "Sumatra", for = "windows" },
+]
+
+download = [
+  { run = "ya emit download --open %S", desc = "Download and open" },
+  { run = "ya emit download %S", desc = "Download" },
 ]
 
 trash = [
@@ -69,73 +70,67 @@ trash = [
 ]
 
 [[opener.bulk-rename]]
-run = 'nvim "%s"'
+run = "nvim %s"
 block = true
 
 [open]
 rules = [
   # Folder
   { mime = "folder/*", use = [
-    "open",
     "edit",
     "compress",
     "quickLook",
   ] },
-  # # Markdown
-  # { mime = "text/markdown", use = [
-  #   "markdown",
-  # ] },
-  { mime = "text/html", use = [
-    "Browser",
-    "edit",
-  ] },
   # Text
   { mime = "text/*", use = ["edit", "compress", "reveal"] },
-  { mime = "application/xml", use = [
-    "edit",
-  ] },
+
   # Image
   { mime = "image/*", use = [
     "image",
-    "open",
-    "reveal",
     "compress",
+    "reveal",
   ] },
+
   # Media
   { mime = "audio/*", use = [
     "audio",
-    "open",
+    "compress",
     "reveal",
   ] },
   { mime = "video/*", use = [
     "video",
-    "open",
+    "compress",
     "reveal",
   ] },
+
   # Archive
   { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [
     "extract",
     "reveal",
     "compress",
   ] },
+
   # JSON
-  { mime = "application/{json,ndjson,javascript,wine-extension-ini}", use = ["edit", "reveal"] },
+  { mime = "application/{json,ndjson,javascript,wine-extension-ini}", use = ["edit", "compress", "reveal"] },
 
   # PDF
   { mime = "application/pdf", use = [
     "PDF",
-    "open",
   ] },
+
   # Virtual file system
+  { mime = "vfs/{absent,stale}", use = "download" },
+
   # Empty file
   { mime = "inode/empty", use = [
     "edit",
-    "open",
     "compress",
     "reveal",
   ] },
+
   # Trash
   { mime = "trash/**", use = ["open", "trash"] },
+
   # Fallback
   { url = "*", use = [
     "open",
@@ -175,8 +170,6 @@ prepend_previewers = [
   { mime = "application/subrip", run = "mediainfo" },
   # Adobe Illustrator, Adobe Photoshop is image/adobe.photoshop, already handled above
   { mime = "application/postscript", run = "mediainfo" },
-  # 原先 previewers 里自定义的 xml 代码预览（previewers 整体已删除，改为继承 default）
-  { mime = "application/xml", run = "code" },
 
   # not god now
   # { url = "*.csv", run = "duckdb" },

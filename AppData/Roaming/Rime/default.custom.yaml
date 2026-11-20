@@ -1,0 +1,14 @@
+customization:
+  distribution_code_name: Weasel
+  distribution_version: 0.17.4
+  generator: "Rime::SwitcherSettings"
+  modified_time: "Tue Oct 27 11:35:38 2026"
+  rime_version: 1.13.1
+patch:
+  "key_binder/bindings/+":
+    - {accept: comma, send: Page_Up, when: paging}
+    - {accept: period, send: Page_Down, when: has_menu}
+    - {accept: "Control+n", send: Down, when: composing}
+    - {accept: "Control+p", send: Up, when: composing}
+  schema_list:
+    - {schema: rime_frost_double_pinyin_flypy}

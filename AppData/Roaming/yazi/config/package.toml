@@ -10,17 +10,12 @@ hash = "451fa198c0d4c3eecf34429b1106a60e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "603fa36"
+rev = "9166202"
 hash = "acf841be033b88195a008c65fd973883"
 
 [[plugin.deps]]
-use = "yazi-rs/plugins:diff"
-rev = "603fa36"
-hash = "9e4c272c2e4d9a0df50abb69ae93d4ab"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "603fa36"
+rev = "9166202"
 hash = "a0d570162ec1ae6e3945f547c3d784f9"
 
 [[plugin.deps]]
@@ -30,7 +25,7 @@ hash = "5112de4ea9ce83c9b6aa748b3fad665d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "603fa36"
+rev = "9166202"
 hash = "7d3b7f99e600fd7e77ebc5eb8423a897"
 
 [[plugin.deps]]

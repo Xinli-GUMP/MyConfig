@@ -8,13 +8,24 @@ patch:
   "style/color_scheme": lost_temple
   show_notifications_time: 300
   "style/horizontal": false
+
+  app_options/+:
+    # 默认中文输入法状态
+    Weixin.exe: { ascii_mode: false }
+    QQ.exe: { ascii_mode: false }
+    brave.exe: { ascii_mode: false }
+    WINWORD.exe: { ascii_mode: false }
+    notepad.exe: { ascii_mode: false }
+
   # 默认英文输入法状态
-  "app_options/WindowsTerminal.exe/ascii_mode": true
-  "app_options/explorer.exe/ascii_mode": true
-  "app_options/StartMenuExperienceHost.exe/ascii_mode": true
-  "app_options/zed.exe/ascii_mode": true
-  "app_options/goldendict.exe/ascii_mode": true
-  "app_options/Taskmgr.exe/ascii_mode": true
-  "app_options/ffplay.exe/ascii_mode": true
-  "app_options/MusicBee.exe/ascii_mode": true
-  "app_options/PotPlayerMini64.exe/ascii_mode": true
+  # "app_options/WindowsTerminal.exe/ascii_mode": true
+  # "app_options/explorer.exe/ascii_mode": true
+  # "app_options/StartMenuExperienceHost.exe/ascii_mode": true
+  # "app_options/zed.exe/ascii_mode": true
+  # "app_options/goldendict.exe/ascii_mode": true
+  # "app_options/Taskmgr.exe/ascii_mode": true
+  # "app_options/ffplay.exe/ascii_mode": true
+  # "app_options/MusicBee.exe/ascii_mode": true
+  # "app_options/PotPlayerMini64.exe/ascii_mode": true
+  # "app_options/SumatraPDF.exe/ascii_mode": true
+  # "app_options/sublime_text.exe/ascii_mode": true

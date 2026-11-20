@@ -11,6 +11,9 @@
 
 [mgr]
 prepend_keymap = [
+  # Enter 用 Windows 默认应用打开（`start ""` 即系统默认打开方式）。
+  { on = "<Enter>", run = "shell 'start \"\" %h' --orphan", desc = "Open with the system default app" },
+
   # z/Z 与 default 相反（你的偏好：z=zoxide, Z=fzf）
   { on = "z", run = "plugin zoxide", desc = "Jump to a directory using zoxide" },
   { on = "Z", run = "plugin fzf", desc = "Jump to a directory or reveal a file using fzf" },
@@ -29,7 +32,7 @@ prepend_keymap = [
   # custom-shell 作为默认 shell
   { on = [";"], run = "plugin custom-shell -- nu --interactive --block=false", desc = "custom-shell as default, interactive" },
   { on = [":"], run = "plugin custom-shell -- nu --interactive --block --wait", desc = "custom-shell as default, interactive, block" },
-  { on = ["'", "h"], run = "plugin custom-shell history", desc = "Show Custom-shell history" },
+  # { on = ["'", "h"], run = "plugin custom-shell history", desc = "Show Custom-shell history" },
 
   # vfs
   { on = ["g", "p"], run = "cd sftp://honor/storage", desc = "Go to Honor" },
@@ -46,9 +49,6 @@ prepend_keymap = [
 
   # 跳转到当前目录的第一个文件位置
   { on = ["F"], run = "plugin first-non-directory", desc = "Jumps to the first file" },
-
-  # Diff the selected file with the hovered file
-  { on = "<C-A-d>", run = "plugin diff", desc = "Diff the selected with the hovered file" },
 
   # 使用系统剪贴板
   { on = "<C-y>", run = ["plugin system-clipboard"] },
